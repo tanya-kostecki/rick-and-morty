@@ -1,0 +1,25 @@
+:root {
+  --light-bg: #fff;
+  --secondary-text: #fff;
+  --primary-text: #000;
+  --dark-bg: #353744FF;
+  --accent-color: #610fbd;
+  --font-size-link: 20px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 100%;
+  min-height: 100vh;
+}
+
+ul li {
+  list-style: none;
+}

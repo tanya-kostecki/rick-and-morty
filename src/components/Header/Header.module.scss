@@ -1,0 +1,35 @@
+.header {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  background-color: var(--primary-bg);
+  border-bottom: 1px solid rgb(46 41 51 / 8%);
+  z-index: 2;
+}
+
+.headerWrapper {
+  max-width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ul {
+  display: flex;
+  gap: 4rem;
+  font-size: var(--font-size-link)
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--accent-color);
+  transition: 0.3s ease-in-out;
+}
+
+.active {
+  transform: scale(1.4);
+  font-weight: bold;
+}
+
