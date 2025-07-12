@@ -9,17 +9,61 @@
 
 .headerWrapper {
   max-width: 1280px;
+  padding: 0 25px;
   height: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+}
+
+/*.nav {
+  @media screen and (max-width: 767px) {
+    position: relative;
+    transform: translateY(100%);
+    width: 100%;
+    height: 100%;
+  }
+}*/
+
+.nav {
+  @media screen and (max-width: 767px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 20;
+  }
+}
+
+.navOpen {
+  transform: translateY(0);
 }
 
 .ul {
   display: flex;
   gap: 4rem;
-  font-size: var(--font-size-link)
+  font-size: var(--font-size-link);
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+  }
+}
+
+.ul li {
+  @media screen and (max-width: 767px) {
+    text-align: center;
+  }
 }
 
 .navLink {
@@ -31,5 +75,14 @@
 .active {
   transform: scale(1.4);
   font-weight: bold;
+}
+
+.menuToggleIcon {
+  position: absolute;
+  cursor: pointer;
+  z-index: 20;
+  width: 40px;
+  height: 40px;
+  color: var(--accent-color);
 }
 
