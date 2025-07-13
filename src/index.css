@@ -4,6 +4,9 @@
   --primary-text: #515363;
   --accent-color: #610fbd;
   --font-size-link: 20px;
+  --accent-color-r: 97;
+  --accent-color-g: 15;
+  --accent-color-b: 189;
 }
 
 *,

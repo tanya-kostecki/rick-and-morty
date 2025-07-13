@@ -9,6 +9,12 @@
   cursor: pointer;
 }
 
+.button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
 .arrow {
   display: inline-block;
   transform: rotate(0deg);
@@ -19,4 +25,33 @@
   transform: rotate(-180deg);
 }
 
+.dropdown {
+  position: absolute;
+  padding: 5px 2px;
+  top: 100%;
+  left: -1px;
+  right: -1px;
+  border: 1px solid var(--primary-text);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 25;
+  background-color: var(--light-bg);
+}
+
+.dropdown span {
+  display: block;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.chosen {
+  background-color: rgba(
+                  var(--accent-color-r),
+                  var(--accent-color-g),
+                  var(--accent-color-b),
+                  0.5
+  );
+  color: var(--secondary-text);
+}
 
