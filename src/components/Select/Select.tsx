@@ -2,14 +2,15 @@ import clsx from 'clsx'
 import { useState } from 'react'
 
 import { ArrowIcon } from '../../assets/icons/ArrowIcon'
+import { useToggle } from '../../hooks/useToggle'
 
 import styles from './Select.module.scss'
 
 const languageOptions = ['EN', 'РУ']
 
 export const Select = () => {
-  const [isOpen, setIsOpen] = useState(false)
   const [chosenLang, setChosenLang] = useState('EN')
+  const { isOpen, toggleOpen } = useToggle()
 
   const onLanguageChange = () => {
     if (chosenLang === 'EN') {
@@ -17,11 +18,7 @@ export const Select = () => {
     } else {
       setChosenLang('EN')
     }
-    setIsOpen(false)
-  }
-
-  const onArrowClick = () => {
-    setIsOpen((prevState) => !prevState)
+    toggleOpen()
   }
 
   return (
@@ -38,7 +35,7 @@ export const Select = () => {
         aria-label={isOpen ? 'Collapse language options' : 'Expand language options'}
         aria-expanded={isOpen}
         aria-controls={'language-dropdown'}
-        onClick={onArrowClick}
+        onClick={toggleOpen}
         className={styles.button}
         tabIndex={0}
       >

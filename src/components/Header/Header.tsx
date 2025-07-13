@@ -1,9 +1,9 @@
 import clsx from 'clsx'
-import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { LocoIcon } from '../../assets/icons/LocoIcon'
 import { useScreenWidth } from '../../hooks/useScreenWidth'
+import { useToggle } from '../../hooks/useToggle'
 import { Select } from '../Select/Select'
 
 import styles from './Header.module.scss'
@@ -12,11 +12,7 @@ import { MenuIcon } from './MenuIcon/MenuIcon'
 
 export const Header = () => {
   const { isMobile } = useScreenWidth()
-  const [isOpen, setIsOpen] = useState(false)
-
-  const toggleMenu = () => {
-    setIsOpen((prevState) => !prevState)
-  }
+  const { isOpen, toggleOpen } = useToggle()
 
   return (
     <header className={styles.header}>
@@ -39,7 +35,7 @@ export const Header = () => {
             </ul>
           </nav>
           {isMobile && (
-            <MenuIcon className={styles.menuToggleIcon} isOpen={isOpen} onClick={toggleMenu} />
+            <MenuIcon className={styles.menuToggleIcon} isOpen={isOpen} onClick={toggleOpen} />
           )}
         </div>
       </div>
