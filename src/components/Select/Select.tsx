@@ -27,7 +27,6 @@ export const Select = () => {
   return (
     <div
       className={styles.selectContainer}
-      role="button"
       aria-haspopup="listbox"
       aria-expanded={isOpen}
       aria-labelledby="custom-select-label"
@@ -40,6 +39,7 @@ export const Select = () => {
         aria-controls={'language-dropdown'}
         onClick={toggleOpen}
         className={styles.button}
+        role="button"
         tabIndex={0}
       >
         <ArrowIcon

@@ -44,6 +44,7 @@ export default tseslint.config([
         node: {
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },
+        typescript: {}
       },
     },
   },

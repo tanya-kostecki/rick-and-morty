@@ -46,11 +46,11 @@
 }
 
 .chosen {
-  background-color: rgba(
-                  var(--accent-color-r),
-                  var(--accent-color-g),
-                  var(--accent-color-b),
-                  0.5
+  background-color: rgb(
+                  var(--accent-color-r)
+                  var(--accent-color-g)
+                  var(--accent-color-b)
+                  50%
   );
   color: var(--secondary-text);
 }

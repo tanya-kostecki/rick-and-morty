@@ -3,7 +3,7 @@ import type { SVGProps } from 'react'
 export const ArrowIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g id="SVGRepo_tracerCarrier" stroke="#CCCCCC" strokeWidth="0.048"></g>
       <g id="SVGRepo_iconCarrier">
         <path
