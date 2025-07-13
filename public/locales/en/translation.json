@@ -1,0 +1,16 @@
+{
+  "header": {
+    "characters": "Characters",
+    "episodes": "Episodes",
+    "locations": "Locations"
+  },
+  "characters": {
+    "title": "Characters"
+  },
+  "episodes": {
+    "title": "Episodes"
+  },
+  "locations": {
+    "title": "Locations"
+  }
+}

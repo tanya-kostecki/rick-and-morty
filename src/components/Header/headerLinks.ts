@@ -1,18 +1,21 @@
+import type { TFunction } from 'i18next'
+
 interface HeaderLink {
   label: string
   href: string
 }
-export const headerLinks: HeaderLink[] = [
+
+export const getHeaderLinks = (t: TFunction): HeaderLink[] => [
   {
-    label: 'Characters',
+    label: t('header.characters'),
     href: '/',
   },
   {
-    label: 'Episodes',
+    label: t('header.episodes'),
     href: '/episodes',
   },
   {
-    label: 'Locations',
+    label: t('header.locations'),
     href: '/locations',
   },
 ]

@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 
 import { LocoIcon } from '../../assets/icons/LocoIcon'
@@ -7,12 +8,14 @@ import { useToggle } from '../../hooks/useToggle'
 import { Select } from '../Select/Select'
 
 import styles from './Header.module.scss'
-import { headerLinks } from './headerLinks'
+import { getHeaderLinks } from './headerLinks'
 import { MenuIcon } from './MenuIcon/MenuIcon'
 
 export const Header = () => {
   const { isMobile } = useScreenWidth()
   const { isOpen, toggleOpen } = useToggle()
+
+  const { t } = useTranslation()
 
   return (
     <header className={styles.header}>
@@ -22,7 +25,7 @@ export const Header = () => {
           <Select />
           <nav className={clsx(styles.nav, isOpen && styles.navOpen)}>
             <ul className={styles.ul}>
-              {headerLinks.map((link) => (
+              {getHeaderLinks(t).map((link) => (
                 <li key={link.label}>
                   <NavLink
                     to={link.href}

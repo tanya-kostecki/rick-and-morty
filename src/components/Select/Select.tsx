@@ -1,23 +1,26 @@
 import clsx from 'clsx'
-import { useState } from 'react'
 
 import { ArrowIcon } from '../../assets/icons/ArrowIcon'
 import { useToggle } from '../../hooks/useToggle'
+import i18n from '../../i18n'
 
 import styles from './Select.module.scss'
 
-const languageOptions = ['EN', 'РУ']
+const languageOptions: ('en' | 'ru')[] = ['en', 'ru']
+
+const languageLabels: Record<'en' | 'ru', string> = {
+  en: 'EN',
+  ru: 'РУ',
+}
 
 export const Select = () => {
-  const [chosenLang, setChosenLang] = useState('EN')
   const { isOpen, toggleOpen } = useToggle()
 
-  const onLanguageChange = () => {
-    if (chosenLang === 'EN') {
-      setChosenLang('РУ')
-    } else {
-      setChosenLang('EN')
-    }
+  const chosenLang = i18n.language as 'en' | 'ru'
+
+  const onLanguageChange = async (lang: 'en' | 'ru') => {
+    await i18n.changeLanguage(lang)
+    localStorage.setItem('lang', lang)
     toggleOpen()
   }
 
@@ -30,7 +33,7 @@ export const Select = () => {
       aria-labelledby="custom-select-label"
       tabIndex={0}
     >
-      <span id="custom-select-label">{chosenLang}</span>
+      <span id="custom-select-label">{languageLabels[chosenLang]}</span>
       <button
         aria-label={isOpen ? 'Collapse language options' : 'Expand language options'}
         aria-expanded={isOpen}
@@ -60,9 +63,9 @@ export const Select = () => {
               tabIndex={0}
               aria-selected={chosenLang === option}
               className={clsx(chosenLang === option && styles.chosen)}
-              onClick={onLanguageChange}
+              onClick={() => onLanguageChange(option)}
             >
-              {option}
+              {languageLabels[option]}
             </span>
           ))}
         </div>

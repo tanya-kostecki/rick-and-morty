@@ -1,0 +1,16 @@
+{
+  "header": {
+    "characters": "Персонажи",
+    "episodes": "Эпизоды",
+    "locations": "Локации"
+  },
+  "characters": {
+    "title": "Персонажи"
+  },
+  "episodes": {
+    "title": "Эпизоды"
+  },
+  "locations": {
+    "title": "Локации"
+  }
+}

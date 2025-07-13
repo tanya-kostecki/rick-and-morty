@@ -1,4 +1,9 @@
+import { useTranslation } from 'react-i18next'
+
+import { Title } from '../../components/Title/Title'
+
 const Episodes = () => {
-  return <h1>Episodes</h1>
+  const { t } = useTranslation()
+  return <Title>{t('episodes.title')}</Title>
 }
 export default Episodes
