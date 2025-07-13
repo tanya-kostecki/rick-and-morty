@@ -1,0 +1,22 @@
+.selectContainer {
+  position: relative;
+  border: 1px solid var(--primary-text);
+  padding: 5px 10px;
+  min-width: 70px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.arrow {
+  display: inline-block;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.up {
+  transform: rotate(-180deg);
+}
+
+

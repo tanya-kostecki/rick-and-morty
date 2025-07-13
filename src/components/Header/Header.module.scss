@@ -18,14 +18,15 @@
   position: relative;
 }
 
-/*.nav {
+.navWrapper {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+
   @media screen and (max-width: 767px) {
-    position: relative;
-    transform: translateY(100%);
-    width: 100%;
-    height: 100%;
+    gap: 1rem;
   }
-}*/
+}
 
 .nav {
   @media screen and (max-width: 767px) {
