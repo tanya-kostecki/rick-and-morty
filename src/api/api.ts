@@ -10,19 +10,35 @@ export const instance = axios.create({
   },
 })
 
+type Params = {
+  page?: number
+  count?: number
+} & {
+  signal: AbortSignal
+}
 export const api = {
-  async fetchCharacters(count: number = 20, page: number = 1): Promise<BaseResponse<Character>> {
-    const response = await instance.get(`/character?page=${page}&count=${count}`)
+  async fetchCharacters({
+    page = 1,
+    count = 20,
+    signal,
+  }: Params): Promise<BaseResponse<Character>> {
+    const response = await instance.get(`/character?page=${page}&count=${count}`, {
+      signal,
+    })
     return response.data
   },
 
-  async fetchLocations(count: number = 20, page: number = 1): Promise<BaseResponse<Location>> {
-    const response = await instance.get(`/location?page=${page}&count=${count}`)
+  async fetchLocations({ page = 1, count = 20, signal }: Params): Promise<BaseResponse<Location>> {
+    const response = await instance.get(`/location?page=${page}&count=${count}`, {
+      signal,
+    })
     return response.data
   },
 
-  async fetchEpisodes(count: number = 20, page: number = 1): Promise<BaseResponse<Episode>> {
-    const response = await instance.get(`/episode?page=${page}&count=${count}`)
+  async fetchEpisodes({ page = 1, count = 20, signal }: Params): Promise<BaseResponse<Episode>> {
+    const response = await instance.get(`/episode?page=${page}&count=${count}`, {
+      signal,
+    })
     return response.data
   },
 }

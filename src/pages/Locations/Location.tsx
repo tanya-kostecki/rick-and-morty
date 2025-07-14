@@ -1,31 +1,17 @@
-import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { api } from '../../api/api'
 import type { Location } from '../../api/types'
 import { Card } from '../../components/Card/Card'
 import { PageLayout } from '../../components/PageLayout/PageLayout'
+import { useFetch } from '../../hooks/useFetch'
 
 const Locations = () => {
   const { t } = useTranslation()
-  const [locations, setLocations] = useState<Location[]>([])
-
-  useEffect(() => {
-    const getLocations = async () => {
-      try {
-        const res = await api.fetchLocations(1)
-        setLocations(res.results)
-        console.log(res.results)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
-    getLocations()
-  }, [])
+  const { data: locations, error, isLoading } = useFetch<Location>(api.fetchLocations, 1)
 
   return (
-    <PageLayout title={t('locations.title')}>
+    <PageLayout title={t('locations.title')} isLoading={isLoading} error={error}>
       {locations.map((location) => (
         <Card key={location.id}>
           <h3>{location.name}</h3>
