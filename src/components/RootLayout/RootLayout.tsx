@@ -2,9 +2,9 @@ import { Outlet } from 'react-router-dom'
 
 import { Header } from '../Header/Header'
 
-import styles from './Layout.module.scss'
+import styles from './RootLayout.module.scss'
 
-export const Layout = () => {
+export const RootLayout = () => {
   return (
     <div className="app">
       <Header />

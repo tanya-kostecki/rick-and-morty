@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 import { LocoIcon } from '../../assets/icons/LocoIcon'
 import { useScreenWidth } from '../../hooks/useScreenWidth'
@@ -20,7 +20,9 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerWrapper}>
-        <LocoIcon fill={'var(--accent-color)'} width={40} height={40} />
+        <Link to={'/'}>
+          <LocoIcon fill={'var(--accent-color)'} width={40} height={40} />
+        </Link>
         <div className={styles.navWrapper}>
           <Select />
           <nav className={clsx(styles.nav, isOpen && styles.navOpen)}>
