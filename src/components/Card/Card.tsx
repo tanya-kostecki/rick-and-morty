@@ -1,17 +1,32 @@
 import clsx from 'clsx'
-import type { ReactNode } from 'react'
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
+import { NavLink } from 'react-router-dom'
 
 import styles from './Card.module.scss'
 
-type Props = {
+type Props<T extends ElementType = 'div'> = {
   children: ReactNode
   className?: string
   onMouseEnter?: () => void
-}
-export const Card = ({ children, className, onMouseEnter }: Props) => {
+  as?: T
+} & ComponentPropsWithoutRef<T>
+export const Card = <T extends ElementType = 'div'>({
+  children,
+  className,
+  onMouseEnter,
+  as,
+  to,
+  ...props
+}: Props<T>) => {
+  const Component = as ? NavLink : 'div'
   return (
-    <div className={clsx(styles.card, className)} onMouseEnter={onMouseEnter}>
+    <Component
+      to={to}
+      className={clsx(styles.card, className)}
+      onMouseEnter={onMouseEnter}
+      {...props}
+    >
       {children}
-    </div>
+    </Component>
   )
 }

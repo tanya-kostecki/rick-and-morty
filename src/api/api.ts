@@ -47,8 +47,17 @@ export const api = {
     return response.data
   },
 
+  async fetchLocation(id: number): Promise<Location> {
+    const response = await instance.get(`/location/${id}`)
+    return response.data
+  },
+
   async fetchMultipleCharacters(ids: number[]): Promise<Character[]> {
     const response = await instance.get(`/character/${ids}`)
+    return response.data
+  },
+  async fetchMultipleLocations(ids: number[]): Promise<Location[]> {
+    const response = await instance.get(`/location/${ids}`)
     return response.data
   },
 }

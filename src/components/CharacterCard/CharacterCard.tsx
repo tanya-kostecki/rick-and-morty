@@ -12,11 +12,9 @@ type Props = {
 }
 export const CharacterCard = ({ id, name, image, onMouseEnter }: Props) => {
   return (
-    <NavLink to={`/${id}`} className={styles.link}>
-      <Card className={styles.card} onMouseEnter={onMouseEnter}>
-        <h3>{name}</h3>
-        <img src={image} alt={name} />
-      </Card>
-    </NavLink>
+    <Card as={NavLink} to={`/${id}`} className={styles.card} onMouseEnter={onMouseEnter}>
+      <h3>{name}</h3>
+      <img src={image} alt={name} />
+    </Card>
   )
 }

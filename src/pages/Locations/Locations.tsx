@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { NavLink } from 'react-router-dom'
 
 import { api } from '../../api/api'
 import type { Location } from '../../api/types'
@@ -13,7 +14,7 @@ const Locations = () => {
   return (
     <PageLayout title={t('locations.title')} isLoading={isLoading} error={error} pages={allPages}>
       {locations.map((location) => (
-        <Card key={location.id}>
+        <Card as={NavLink} to={`/locations/${location.id}`} key={location.id}>
           <h3>{location.name}</h3>
           <p>{location.type}</p>
           <p>{location.dimension}</p>

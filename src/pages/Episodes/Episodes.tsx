@@ -7,8 +7,6 @@ import { Card } from '../../components/Card/Card'
 import { PageLayout } from '../../components/PageLayout/PageLayout'
 import { useFetch } from '../../hooks/useFetch'
 
-import styles from './Episodes.module.scss'
-
 const Episodes = () => {
   const { t } = useTranslation()
   const { data: episodes, error, isLoading, allPages } = useFetch<Episode>(api.fetchEpisodes, 1)
@@ -16,12 +14,10 @@ const Episodes = () => {
   return (
     <PageLayout title={t('episodes.title')} isLoading={isLoading} error={error} pages={allPages}>
       {episodes.map((episode) => (
-        <NavLink className={styles.link} to={`/episodes/${episode.id}`} key={episode.id}>
-          <Card>
-            <h3>{episode.name}</h3>
-            <p>{episode.air_date}</p>
-          </Card>
-        </NavLink>
+        <Card as={NavLink} to={`/episodes/${episode.id}`} key={episode.id}>
+          <h3>{episode.name}</h3>
+          <p>{episode.air_date}</p>
+        </Card>
       ))}
     </PageLayout>
   )
