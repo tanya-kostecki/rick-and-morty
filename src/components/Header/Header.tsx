@@ -32,6 +32,7 @@ export const Header = () => {
                   <NavLink
                     to={link.href}
                     className={({ isActive }) => clsx(styles.navLink, isActive && styles.active)}
+                    onClick={toggleOpen}
                   >
                     {link.label}
                   </NavLink>

@@ -6,7 +6,17 @@ import styles from './Card.module.scss'
 type Props = {
   children: ReactNode
   className?: string
+  onMouseEnter?: () => void
+  onMouseLeave?: () => void
 }
-export const Card = ({ children, className }: Props) => {
-  return <div className={clsx(styles.card, className)}>{children}</div>
+export const Card = ({ children, className, onMouseEnter, onMouseLeave }: Props) => {
+  return (
+    <div
+      className={clsx(styles.card, className)}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      {children}
+    </div>
+  )
 }

@@ -12,17 +12,19 @@ type Props = {
   children: ReactNode
   error: string | null
   pages: number
+  onMouseLeave?: () => void
 }
 
-export const PageLayout = ({ title, isLoading, children, error, pages }: Props) => {
+export const PageLayout = ({ title, isLoading, children, error, pages, onMouseLeave }: Props) => {
   return (
     <>
       <Title>{title}</Title>
-      <div className={styles.cards}>
+      <div className={styles.cards} onMouseLeave={onMouseLeave}>
         {isLoading && <Loader />}
         {children}
         {error && <span>{error}</span>}
       </div>
+
       {!isLoading && <Pagination lastPage={pages} />}
     </>
   )
