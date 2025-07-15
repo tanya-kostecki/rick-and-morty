@@ -4,6 +4,10 @@
     "episodes": "Эпизоды",
     "locations": "Локации"
   },
+  "pagination": {
+    "next": "Вперед",
+    "back": "Назад"
+  },
   "characters": {
     "title": "Персонажи"
   },

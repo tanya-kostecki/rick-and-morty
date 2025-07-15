@@ -8,10 +8,10 @@ import { useFetch } from '../../hooks/useFetch'
 
 const Locations = () => {
   const { t } = useTranslation()
-  const { data: locations, error, isLoading } = useFetch<Location>(api.fetchLocations, 1)
+  const { data: locations, error, isLoading, allPages } = useFetch<Location>(api.fetchLocations, 1)
 
   return (
-    <PageLayout title={t('locations.title')} isLoading={isLoading} error={error}>
+    <PageLayout title={t('locations.title')} isLoading={isLoading} error={error} pages={allPages}>
       {locations.map((location) => (
         <Card key={location.id}>
           <h3>{location.name}</h3>

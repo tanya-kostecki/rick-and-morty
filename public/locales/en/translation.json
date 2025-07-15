@@ -4,6 +4,10 @@
     "episodes": "Episodes",
     "locations": "Locations"
   },
+  "pagination": {
+    "next": "Next",
+    "back": "Back"
+  },
   "characters": {
     "title": "Characters"
   },

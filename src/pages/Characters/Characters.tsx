@@ -10,11 +10,16 @@ import styles from './Characters.module.scss'
 
 const Characters = () => {
   const { t } = useTranslation()
-  const { data: characters, error, isLoading } = useFetch<Character>(api.fetchCharacters, 1)
-
+  const {
+    data: characters,
+    error,
+    isLoading,
+    allPages,
+  } = useFetch<Character>(api.fetchCharacters, 42)
+  console.log(allPages)
   return (
-    <PageLayout title={t('characters.title')} isLoading={isLoading} error={error}>
-      {characters.map((character) => (
+    <PageLayout title={t('characters.title')} isLoading={isLoading} error={error} pages={allPages}>
+      {characters?.map((character) => (
         <Card key={character.id} className={styles.card}>
           <h3>{character.name}</h3>
           <img src={character.image} alt={character.name} />

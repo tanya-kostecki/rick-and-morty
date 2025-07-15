@@ -16,20 +16,3 @@ export const routes = createBrowserRouter([
     ],
   },
 ])
-
-/*
-export const routes = createBrowserRouter([
-  {
-    path: '/',
-    element: <Characters />,
-  },
-  {
-    path: '/locations',
-    element: <Locations />,
-  },
-  {
-    path: '/episodes',
-    element: <Episodes />,
-  },
-])
-*/

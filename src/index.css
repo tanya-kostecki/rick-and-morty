@@ -3,11 +3,13 @@
   --light-gray-bg: #f3f3f3;
   --secondary-text: #fff;
   --primary-text: #515363;
-  --accent-color: #610fbd;
+  --accent-color: #7130bf;
   --font-size-link: 20px;
   --accent-color-r: 97;
   --accent-color-g: 15;
   --accent-color-b: 189;
+  --accent-color-hover: #8149bd;
+  --accent-color-active: #8160b5 ;
 }
 
 *,

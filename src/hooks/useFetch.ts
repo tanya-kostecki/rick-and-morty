@@ -12,6 +12,7 @@ export const useFetch = <T>(
   const [data, setData] = useState<T[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [allPages, setAllPages] = useState(0)
 
   useEffect(() => {
     const controller = new AbortController()
@@ -19,9 +20,11 @@ export const useFetch = <T>(
     const fetchData = async () => {
       setIsLoading(true)
       setError(null)
+
       try {
         const res = await fetchFn({ page, signal: controller.signal })
         setData(res.results)
+        setAllPages(res.info.pages)
       } catch (error) {
         if (axios.isCancel(error)) return
 
@@ -46,5 +49,5 @@ export const useFetch = <T>(
     }
   }, [fetchFn, page])
 
-  return { data, isLoading, error }
+  return { data, isLoading, error, allPages }
 }
