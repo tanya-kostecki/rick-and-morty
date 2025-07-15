@@ -32,3 +32,14 @@
   flex-direction: column;
   gap: 1rem;
 }
+
+.grid {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.h2 {
+  font-size: 22px;
+  margin: 25px 0;
+}
