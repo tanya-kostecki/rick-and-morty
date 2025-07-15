@@ -1,0 +1,28 @@
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.img {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.h2 {
+  font-size: 22px;
+  margin: 25px 0;
+}
+
+.characters {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.character {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--primary-text);
+}

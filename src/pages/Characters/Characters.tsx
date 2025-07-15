@@ -1,16 +1,13 @@
 import { Fragment, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { NavLink } from 'react-router-dom'
 
 import { api } from '../../api/api'
 import type { Character } from '../../api/types'
-import { Card } from '../../components/Card/Card'
+import { CharacterCard } from '../../components/CharacterCard/CharacterCard'
 import { Modal } from '../../components/Modal/Modal'
 import { PageLayout } from '../../components/PageLayout/PageLayout'
 import { useFetch } from '../../hooks/useFetch'
 import { useScreenWidth } from '../../hooks/useScreenWidth'
-
-import styles from './Characters.module.scss'
 
 const Characters = () => {
   const { t } = useTranslation()
@@ -35,12 +32,12 @@ const Characters = () => {
     >
       {characters?.map((character) => (
         <Fragment key={character.id}>
-          <NavLink to={`/${character.id}`} className={styles.link}>
-            <Card className={styles.card} onMouseEnter={() => setCurrentCharacter(character)}>
-              <h3>{character.name}</h3>
-              <img src={character.image} alt={character.name} />
-            </Card>
-          </NavLink>
+          <CharacterCard
+            id={character.id}
+            onMouseEnter={() => setCurrentCharacter(character)}
+            name={character.name}
+            image={character.image}
+          />
           {currentCharacter?.id === character.id && !isTablet && (
             <Modal currentCharacter={currentCharacter} onClose={() => setCurrentCharacter(null)} />
           )}

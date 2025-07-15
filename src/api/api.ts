@@ -41,4 +41,14 @@ export const api = {
     const response = await instance.get(`/character/${id}`)
     return response.data
   },
+
+  async fetchEpisode(id: number): Promise<Episode> {
+    const response = await instance.get(`/episode/${id}`)
+    return response.data
+  },
+
+  async fetchMultipleCharacters(ids: number[]): Promise<Character[]> {
+    const response = await instance.get(`/character/${ids}`)
+    return response.data
+  },
 }

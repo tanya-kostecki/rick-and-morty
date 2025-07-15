@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { api } from '../../api/api'
 import { Card } from '../../components/Card/Card'
 import { Loader } from '../../components/Loader/Loader'
+import { Title } from '../../components/Title/Title'
 import { useFetchItem } from '../../hooks/useFetchItem'
 
 import styles from './Character.module.scss'
@@ -17,7 +18,7 @@ export const CharacterPage = () => {
   return (
     <Card className={styles.character}>
       <div className={styles.mainBlock}>
-        <h1>{character?.name}</h1>
+        <Title className={styles.title}>{character?.name}</Title>
         <img src={character?.image} alt={character?.name} className={styles.image} />
       </div>
       <div className={styles.description}>
