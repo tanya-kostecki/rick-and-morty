@@ -6,24 +6,6 @@
   margin: 40px 0 auto;
 }
 
-.button {
-  background-color: var(--accent-color);
-  color: var(--secondary-text);
-  padding: 5px 10px;
-  font-size: 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-
-  &:hover:not(:disabled) {
-    background-color: var(--accent-color-hover);
-  }
-
-  &:active:not(:disabled) {
-    background-color: var(--accent-color-active);
-  }
-}
-
 .span, .activeSpan {
   cursor: pointer;
 }
@@ -37,6 +19,7 @@
   color: var(--primary-text);
   font-size: 24px;
 }
+
 .disable {
   opacity: 0.5;
   background-color: var(--primary-text);

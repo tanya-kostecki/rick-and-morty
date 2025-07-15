@@ -1,18 +1,5 @@
-/*.modalWrapper {
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  z-index: 50;
-  left: 0;
-}*/
-
 .modalWrapper {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgb(0 0 0 / 20%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +24,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  background-color: rgb(var(--accent-color-r) var(--accent-color-g) var(--accent-color-b) / 40%);
+  background-color: rgb(var(--accent-color-r) var(--accent-color-g) var(--accent-color-b) / 80%);
 }
 
 .img {
@@ -54,15 +41,4 @@
   span {
     background: white;
   }
-}
-
-.button {
-  margin: 0 auto;
-  padding: 12px;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  background-color: var(--accent-color);
-  cursor: pointer;
-  text-decoration: none;
 }

@@ -2,6 +2,8 @@ import clsx from 'clsx'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { Button } from '../../Button/Button'
+
 import styles from './Pagination.module.scss'
 
 type Props = {
@@ -32,13 +34,13 @@ export const Pagination = ({ lastPage }: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      <button
-        className={clsx(styles.button, currentPage === firstPage && styles.disable)}
+      <Button
+        className={clsx(currentPage === firstPage && styles.disable)}
         disabled={currentPage === firstPage}
         onClick={() => setCurrentPage(currentPage - 1)}
       >
         {t('pagination.back')}
-      </button>
+      </Button>
 
       <span
         className={currentPage === firstPage ? styles.activeSpan : styles.span}
@@ -72,13 +74,13 @@ export const Pagination = ({ lastPage }: Props) => {
         {lastPage}
       </span>
 
-      <button
-        className={clsx(styles.button, currentPage === lastPage && styles.disable)}
+      <Button
+        className={clsx(currentPage === lastPage && styles.disable)}
         disabled={currentPage === lastPage}
         onClick={() => setCurrentPage(currentPage + 1)}
       >
         {t('pagination.next')}
-      </button>
+      </Button>
     </div>
   )
 }

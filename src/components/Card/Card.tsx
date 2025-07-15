@@ -7,15 +7,10 @@ type Props = {
   children: ReactNode
   className?: string
   onMouseEnter?: () => void
-  onMouseLeave?: () => void
 }
-export const Card = ({ children, className, onMouseEnter, onMouseLeave }: Props) => {
+export const Card = ({ children, className, onMouseEnter }: Props) => {
   return (
-    <div
-      className={clsx(styles.card, className)}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
+    <div className={clsx(styles.card, className)} onMouseEnter={onMouseEnter}>
       {children}
     </div>
   )

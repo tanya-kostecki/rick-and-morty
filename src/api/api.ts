@@ -36,4 +36,9 @@ export const api = {
     })
     return response.data
   },
+
+  async fetchCharacter(id: number): Promise<Character> {
+    const response = await instance.get(`/character/${id}`)
+    return response.data
+  },
 }

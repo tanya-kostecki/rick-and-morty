@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { NavLink } from 'react-router-dom'
 
 import { api } from '../../api/api'
 import type { Character } from '../../api/types'
@@ -34,10 +35,12 @@ const Characters = () => {
     >
       {characters?.map((character) => (
         <Fragment key={character.id}>
-          <Card className={styles.card} onMouseEnter={() => setCurrentCharacter(character)}>
-            <h3>{character.name}</h3>
-            <img src={character.image} alt={character.name} />
-          </Card>
+          <NavLink to={`/${character.id}`} className={styles.link}>
+            <Card className={styles.card} onMouseEnter={() => setCurrentCharacter(character)}>
+              <h3>{character.name}</h3>
+              <img src={character.image} alt={character.name} />
+            </Card>
+          </NavLink>
           {currentCharacter?.id === character.id && !isTablet && (
             <Modal currentCharacter={currentCharacter} onClose={() => setCurrentCharacter(null)} />
           )}

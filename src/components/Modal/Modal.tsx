@@ -1,5 +1,4 @@
 import { createPortal } from 'react-dom'
-import { NavLink } from 'react-router-dom'
 
 import type { Character } from '../../api/types'
 import { MenuIcon } from '../Header/MenuIcon/MenuIcon'
@@ -24,9 +23,6 @@ export const Modal = ({ currentCharacter, onClose }: Props) => {
         <img src={currentCharacter.image} alt={currentCharacter.name} className={styles.img} />
         <p>Species: {currentCharacter.species}</p>
         <p>Location: {currentCharacter.location.name}</p>
-        <NavLink to={`/character/${currentCharacter.id}`} className={styles.button}>
-          Go to character page
-        </NavLink>
       </div>
     </div>,
     body
