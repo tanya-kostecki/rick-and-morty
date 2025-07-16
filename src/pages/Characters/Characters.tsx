@@ -11,12 +11,13 @@ import { useScreenWidth } from '../../hooks/useScreenWidth'
 
 const Characters = () => {
   const { t } = useTranslation()
+  const [currentPage, setCurrentPage] = useState(1)
   const {
     data: characters,
     error,
     isLoading,
     allPages,
-  } = useFetch<Character>(api.fetchCharacters, 42)
+  } = useFetch<Character>(api.fetchCharacters, currentPage)
 
   const [currentCharacter, setCurrentCharacter] = useState<Character | null>(null)
   const { isTablet } = useScreenWidth()
@@ -29,6 +30,8 @@ const Characters = () => {
       error={error}
       pages={allPages}
       onMouseLeave={() => setCurrentCharacter(null)}
+      setCurrentPage={setCurrentPage}
+      currentPage={currentPage}
     >
       {characters?.map((character) => (
         <Fragment key={character.id}>

@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { Button } from '../../Button/Button'
@@ -8,6 +7,8 @@ import styles from './Pagination.module.scss'
 
 type Props = {
   lastPage: number
+  currentPage: number
+  setCurrentPage: (page: number) => void
 }
 
 const getVisiblePages = (lastPage: number, currentPage: number) => {
@@ -26,8 +27,7 @@ const getVisiblePages = (lastPage: number, currentPage: number) => {
   return { firstPage, visiblePages }
 }
 
-export const Pagination = ({ lastPage }: Props) => {
-  const [currentPage, setCurrentPage] = useState<number>(1)
+export const Pagination = ({ lastPage, currentPage, setCurrentPage }: Props) => {
   const { firstPage, visiblePages } = getVisiblePages(lastPage, currentPage)
 
   const { t } = useTranslation()

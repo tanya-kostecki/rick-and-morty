@@ -12,10 +12,21 @@ type Props = {
   children: ReactNode
   error: string | null
   pages: number
+  setCurrentPage: (page: number) => void
+  currentPage: number
   onMouseLeave?: () => void
 }
 
-export const PageLayout = ({ title, isLoading, children, error, pages, onMouseLeave }: Props) => {
+export const PageLayout = ({
+  title,
+  isLoading,
+  children,
+  error,
+  pages,
+  setCurrentPage,
+  currentPage,
+  onMouseLeave,
+}: Props) => {
   return (
     <>
       <Title>{title}</Title>
@@ -25,7 +36,9 @@ export const PageLayout = ({ title, isLoading, children, error, pages, onMouseLe
         {error && <span>{error}</span>}
       </div>
 
-      {!isLoading && <Pagination lastPage={pages} />}
+      {!isLoading && (
+        <Pagination lastPage={pages} setCurrentPage={setCurrentPage} currentPage={currentPage} />
+      )}
     </>
   )
 }

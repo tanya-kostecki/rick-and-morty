@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 
@@ -9,10 +10,23 @@ import { useFetch } from '../../hooks/useFetch'
 
 const Locations = () => {
   const { t } = useTranslation()
-  const { data: locations, error, isLoading, allPages } = useFetch<Location>(api.fetchLocations, 1)
+  const [currentPage, setCurrentPage] = useState(1)
+  const {
+    data: locations,
+    error,
+    isLoading,
+    allPages,
+  } = useFetch<Location>(api.fetchLocations, currentPage)
 
   return (
-    <PageLayout title={t('locations.title')} isLoading={isLoading} error={error} pages={allPages}>
+    <PageLayout
+      title={t('locations.title')}
+      isLoading={isLoading}
+      error={error}
+      pages={allPages}
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
+    >
       {locations.map((location) => (
         <Card as={NavLink} to={`/locations/${location.id}`} key={location.id}>
           <h3>{location.name}</h3>

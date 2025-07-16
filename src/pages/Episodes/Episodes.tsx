@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 
@@ -9,10 +10,23 @@ import { useFetch } from '../../hooks/useFetch'
 
 const Episodes = () => {
   const { t } = useTranslation()
-  const { data: episodes, error, isLoading, allPages } = useFetch<Episode>(api.fetchEpisodes, 1)
+  const [currentPage, setCurrentPage] = useState(1)
+  const {
+    data: episodes,
+    error,
+    isLoading,
+    allPages,
+  } = useFetch<Episode>(api.fetchEpisodes, currentPage)
 
   return (
-    <PageLayout title={t('episodes.title')} isLoading={isLoading} error={error} pages={allPages}>
+    <PageLayout
+      title={t('episodes.title')}
+      isLoading={isLoading}
+      error={error}
+      pages={allPages}
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
+    >
       {episodes.map((episode) => (
         <Card as={NavLink} to={`/episodes/${episode.id}`} key={episode.id}>
           <h3>{episode.name}</h3>
