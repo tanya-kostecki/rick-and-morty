@@ -2,9 +2,10 @@ import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
 import { Link, NavLink } from 'react-router-dom'
 
-import { LocoIcon } from '../../assets/icons/LocoIcon'
-import { useScreenWidth } from '../../hooks/useScreenWidth'
-import { useToggle } from '../../hooks/useToggle'
+import { LogoIcon } from '@assets/icons/LogoIcon'
+import { useScreenWidth } from '@hooks/useScreenWidth'
+import { useToggle } from '@hooks/useToggle'
+
 import { Select } from '../Select/Select'
 
 import styles from './Header.module.scss'
@@ -21,7 +22,7 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.headerWrapper}>
         <Link to={'/'}>
-          <LocoIcon fill={'var(--accent-color)'} width={40} height={40} />
+          <LogoIcon fill={'var(--accent-color)'} width={40} height={40} />
         </Link>
         <div className={styles.navWrapper}>
           <Select />
