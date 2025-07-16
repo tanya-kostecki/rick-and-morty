@@ -2,11 +2,12 @@ import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 
 import type { Character } from '@/api'
+import { Typography } from '@/components'
 import { MenuIcon } from '@components/Header/MenuIcon/MenuIcon'
 
 import styles from './Modal.module.scss'
 
-type Props = {
+interface Props {
   currentCharacter: Character
   onClose: () => void
 }
@@ -21,16 +22,16 @@ export const Modal = ({ currentCharacter, onClose }: Props) => {
     <div className={styles.modalWrapper}>
       <MenuIcon isOpen={!!currentCharacter} className={styles.close} onClick={onClose} />
       <div className={styles.modal}>
-        <h3>
+        <Typography as={'h3'} variant={'h3'}>
           {t('modal.name')}: {currentCharacter.name}
-        </h3>
+        </Typography>
         <img src={currentCharacter.image} alt={currentCharacter.name} className={styles.img} />
-        <p>
+        <Typography as={'p'} variant={'p'}>
           {t('modal.species')}: {currentCharacter.species}
-        </p>
-        <p>
+        </Typography>
+        <Typography as={'p'} variant={'p'}>
           {t('modal.location')}: {currentCharacter.location.name}
-        </p>
+        </Typography>
       </div>
     </div>,
     body

@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom'
 
-import { Card } from '@/components'
+import { Card, Typography } from '@/components'
 
 import styles from './CharacterCard.module.scss'
 
-type Props = {
+interface Props {
   id: number
   name: string
   image: string
@@ -13,7 +13,9 @@ type Props = {
 export const CharacterCard = ({ id, name, image, onMouseEnter }: Props) => {
   return (
     <Card as={NavLink} to={`/${id}`} className={styles.card} onMouseEnter={onMouseEnter}>
-      <h3>{name}</h3>
+      <Typography as={'h3'} variant={'h3'}>
+        {name}
+      </Typography>
       <img src={image} alt={name} />
     </Card>
   )

@@ -22,6 +22,10 @@ export default tseslint.config([
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
     plugins: {
       prettier,
@@ -38,34 +42,6 @@ export default tseslint.config([
               pattern: '@/**',
               group: 'internal',
             },
-            {
-              pattern: '@components/**',
-              group: 'internal',
-            },
-            {
-              pattern: '@api/**',
-              group: 'internal',
-            },
-            {
-              pattern: '@assets/**',
-              group: 'internal',
-            },
-            {
-              pattern: '@hooks/**',
-              group: 'internal',
-            },
-            {
-              pattern: '@pages/**',
-              group: 'internal',
-            },
-            {
-              pattern: '@routes/**',
-              group: 'internal',
-            },
-            {
-              pattern: '@utils/**',
-              group: 'internal',
-            },
           ],
           alphabetize: { order: 'asc', caseInsensitive: true },
           'newlines-between': 'always',
@@ -79,8 +55,8 @@ export default tseslint.config([
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },
         typescript: {
-          project: './tsconfig.json',
-          alwaysTryTypes: true,
+          /* project: './tsconfig.json',
+          alwaysTryTypes: true,*/
         },
       },
     },

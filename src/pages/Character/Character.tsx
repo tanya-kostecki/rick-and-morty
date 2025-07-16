@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { NavLink, useParams } from 'react-router-dom'
 
 import { api, type Episode } from '@/api'
-import { Card, Loader, Title } from '@/components'
+import { Card, Loader, Typography } from '@/components'
 import { useFetchItem, useFetchMultipleItems } from '@/hooks'
 import { formatDate } from '@/utils'
 
@@ -20,56 +20,63 @@ export const CharacterPage = () => {
   const { t } = useTranslation()
 
   if (isLoading) return <Loader />
-  if (error) return <span>{error}</span>
+  if (error)
+    return (
+      <Typography as={'span'} variant={'span'}>
+        {error}
+      </Typography>
+    )
 
   return (
     <>
       <Card className={styles.character}>
         <div className={styles.mainBlock}>
-          <Title className={styles.title}>{character?.name}</Title>
+          <Typography className={styles.title}>{character?.name}</Typography>
           <img src={character?.image} alt={character?.name} className={styles.image} />
         </div>
         <div className={styles.description}>
-          <span>
+          <Typography as={'span'} variant={'span'}>
             <strong>{t('characterPage.gender')}: </strong>
             {character?.gender}
-          </span>
-          <span>
+          </Typography>
+          <Typography as={'span'} variant={'span'}>
             <strong>{t('characterPage.type')}: </strong>
             {character?.type}
-          </span>
-          <span>
+          </Typography>
+          <Typography as={'span'} variant={'span'}>
             <strong>{t('characterPage.species')}: </strong>
             {character?.species}
-          </span>
-          <span>
+          </Typography>
+          <Typography as={'span'} variant={'span'}>
             <strong>{t('characterPage.location')}: </strong>
             {character?.location.name}
-          </span>
-          <span>
+          </Typography>
+          <Typography as={'span'} variant={'span'}>
             <strong>{t('characterPage.origin')}: </strong>
             {character?.origin.name}
-          </span>
-          <span>
+          </Typography>
+          <Typography as={'span'} variant={'span'}>
             <strong>{t('characterPage.status')}: </strong>
             {character?.status}
-          </span>
-          <span>
+          </Typography>
+          <Typography as={'span'} variant={'span'}>
             <strong>{t('characterPage.created')}: </strong>
             {character?.created && formatDate(character?.created)}
-          </span>
+          </Typography>
         </div>
       </Card>
-      <Title as={'h2'} className={styles.h2}>
+      <Typography as={'h2'} className={styles.h2}>
         {t('characterPage.featured')}
-      </Title>
+      </Typography>
       <div className={styles.grid}>
         {characterEpisodes?.map((episode) => (
           <Card as={NavLink} to={`/episodes/${episode.id}`} key={episode.id}>
-            <h3>{episode.name}</h3>
-            <span>
+            <Typography as={'h3'} variant={'h3'}>
+              {episode.name}
+            </Typography>
+            <Typography as={'span'} variant={'span'}>
               <strong>{t('characterPage.releaseDate')}: </strong> {(episode as Episode).air_date}
-            </span>
+            </Typography>
           </Card>
         ))}
       </div>

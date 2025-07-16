@@ -26,7 +26,9 @@ export const Characters = () => {
       isLoading={isLoading}
       error={error}
       pages={allPages}
-      onMouseLeave={() => setCurrentCharacter(null)}
+      onMouseLeave={() => {
+        setCurrentCharacter(null)
+      }}
       setCurrentPage={setCurrentPage}
       currentPage={currentPage}
     >
@@ -34,12 +36,19 @@ export const Characters = () => {
         <Fragment key={character.id}>
           <CharacterCard
             id={character.id}
-            onMouseEnter={() => setCurrentCharacter(character)}
+            onMouseEnter={() => {
+              setCurrentCharacter(character)
+            }}
             name={character.name}
             image={character.image}
           />
           {currentCharacter?.id === character.id && !isTablet && (
-            <Modal currentCharacter={currentCharacter} onClose={() => setCurrentCharacter(null)} />
+            <Modal
+              currentCharacter={currentCharacter}
+              onClose={() => {
+                setCurrentCharacter(null)
+              }}
+            />
           )}
         </Fragment>
       ))}

@@ -1,0 +1,20 @@
+.h1, .h2, .h3, .p, .span {
+  color: var(--primary-text);
+}
+
+.h1 {
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+.h2 {
+  font-size: 24px;
+}
+
+.h3 {
+  font-size: 20px;
+}
+
+.p, .span {
+  font-size: 16px;
+}

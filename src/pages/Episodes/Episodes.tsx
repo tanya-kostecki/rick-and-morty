@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 
+import { Typography } from '@/components'
 import { api } from '@api/api'
 import type { Episode } from '@api/types'
 import { Card } from '@components/Card/Card'
@@ -29,8 +30,12 @@ export const Episodes = () => {
     >
       {episodes.map((episode) => (
         <Card as={NavLink} to={`/episodes/${episode.id}`} key={episode.id}>
-          <h3>{episode.name}</h3>
-          <p>{episode.air_date}</p>
+          <Typography as={'h3'} variant={'h3'}>
+            {episode.name}
+          </Typography>
+          <Typography as={'p'} variant={'p'}>
+            {episode.air_date}
+          </Typography>
         </Card>
       ))}
     </PageLayout>

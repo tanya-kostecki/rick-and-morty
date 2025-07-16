@@ -61,9 +61,4 @@ export const api = {
     const response = await instance.get(`/episode/${ids}`)
     return response.data
   },
-
-  async fetchMultipleLocations(ids: number[]): Promise<Location[]> {
-    const response = await instance.get(`/location/${ids}`)
-    return response.data
-  },
 }

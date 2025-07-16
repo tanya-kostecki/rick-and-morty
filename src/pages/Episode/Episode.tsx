@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 
 import { api, type Character } from '@/api'
-import { ItemPageLayout, Loader } from '@/components'
+import { ItemPageLayout, Loader, Typography } from '@/components'
 import { useFetchItem, useFetchMultipleItems } from '@/hooks'
 import { formatDate } from '@/utils'
 
@@ -18,7 +18,12 @@ export const EpisodePage = () => {
   const { t } = useTranslation()
 
   if (isLoading) return <Loader />
-  if (error) return <span>{error}</span>
+  if (error)
+    return (
+      <Typography as={'span'} variant={'span'}>
+        {error}
+      </Typography>
+    )
 
   return (
     episode && (
@@ -28,12 +33,12 @@ export const EpisodePage = () => {
         itemsTitle={'Characters from episode'}
         error={charactersError}
       >
-        <span>
+        <Typography as={'span'} variant={'span'}>
           <strong>{t('episodePage.releaseDate')}: </strong> {episode.air_date}
-        </span>
-        <span>
+        </Typography>
+        <Typography as={'span'} variant={'span'}>
           <strong>{t('episodePage.created')}: </strong> {formatDate(episode.created)}
-        </span>
+        </Typography>
       </ItemPageLayout>
     )
   )

@@ -2,11 +2,11 @@ import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import type { Character } from '@/api'
-import { CharacterCard, Card, Title } from '@/components'
+import { CharacterCard, Card, Typography } from '@/components'
 
 import styles from './ItemPageLayout.module.scss'
 
-type Props = {
+interface Props {
   pageTitle: string
   characters: Character[]
   children: ReactNode
@@ -17,15 +17,15 @@ export const ItemPageLayout = ({ pageTitle, characters, children, itemsTitle, er
   const { t } = useTranslation()
   return (
     <>
-      <Title>{pageTitle}</Title>
+      <Typography>{pageTitle}</Typography>
       <Card>
         <div className={styles.infoBlock}>{children}</div>
       </Card>
-      <Title as={'h2'} className={styles.h2}>
+      <Typography as={'h2'} className={styles.h2}>
         {itemsTitle}
-      </Title>
+      </Typography>
       {characters.length === 0 ? (
-        <span>{t('locationPage.noCharacters')}</span>
+        <Typography as={'span'}>{t('locationPage.noCharacters')}</Typography>
       ) : (
         <div className={styles.characters}>
           {characters.map((character) => (
@@ -38,7 +38,7 @@ export const ItemPageLayout = ({ pageTitle, characters, children, itemsTitle, er
           ))}
         </div>
       )}
-      {error && <span>{error}</span>}
+      {error && <Typography as={'span'}>{error}</Typography>}
     </>
   )
 }

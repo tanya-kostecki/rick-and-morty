@@ -12,9 +12,13 @@
   width: 50%;
   max-height: 500px;
   max-width: 500px;
-  color: var(--light-bg);
   font-weight: bold;
+
+  h3, p {
+    color: var(--light-bg);
+  }
 }
+
 
 .modal {
   width: 100%;

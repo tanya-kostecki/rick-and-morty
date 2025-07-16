@@ -5,7 +5,7 @@ import { Button } from '@/components'
 
 import styles from './Pagination.module.scss'
 
-type Props = {
+interface Props {
   lastPage: number
   currentPage: number
   setCurrentPage: (page: number) => void
@@ -37,14 +37,18 @@ export const Pagination = ({ lastPage, currentPage, setCurrentPage }: Props) => 
       <Button
         className={clsx(currentPage === firstPage && styles.disable)}
         disabled={currentPage === firstPage}
-        onClick={() => setCurrentPage(currentPage - 1)}
+        onClick={() => {
+          setCurrentPage(currentPage - 1)
+        }}
       >
         {t('pagination.back')}
       </Button>
 
       <span
         className={currentPage === firstPage ? styles.activeSpan : styles.span}
-        onClick={() => setCurrentPage(firstPage)}
+        onClick={() => {
+          setCurrentPage(firstPage)
+        }}
       >
         {firstPage}
       </span>
@@ -57,7 +61,9 @@ export const Pagination = ({ lastPage, currentPage, setCurrentPage }: Props) => 
           <span
             key={page}
             className={page === currentPage ? styles.activeSpan : styles.span}
-            onClick={() => setCurrentPage(page)}
+            onClick={() => {
+              setCurrentPage(page)
+            }}
           >
             {page}
           </span>
@@ -69,7 +75,9 @@ export const Pagination = ({ lastPage, currentPage, setCurrentPage }: Props) => 
 
       <span
         className={currentPage === lastPage ? styles.activeSpan : styles.span}
-        onClick={() => setCurrentPage(lastPage)}
+        onClick={() => {
+          setCurrentPage(lastPage)
+        }}
       >
         {lastPage}
       </span>
@@ -77,7 +85,9 @@ export const Pagination = ({ lastPage, currentPage, setCurrentPage }: Props) => 
       <Button
         className={clsx(currentPage === lastPage && styles.disable)}
         disabled={currentPage === lastPage}
-        onClick={() => setCurrentPage(currentPage + 1)}
+        onClick={() => {
+          setCurrentPage(currentPage + 1)
+        }}
       >
         {t('pagination.next')}
       </Button>

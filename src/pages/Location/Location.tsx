@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 
 import { api, type Character } from '@/api'
-import { ItemPageLayout, Loader } from '@/components'
+import { ItemPageLayout, Loader, Typography } from '@/components'
 import { useFetchItem, useFetchMultipleItems } from '@/hooks'
 
 export const LocationPage = () => {
@@ -17,7 +17,12 @@ export const LocationPage = () => {
   const { t } = useTranslation()
 
   if (isLoading) return <Loader />
-  if (error) return <span>{error}</span>
+  if (error)
+    return (
+      <Typography as={'span'} variant={'span'}>
+        {error}
+      </Typography>
+    )
 
   return (
     location && (
@@ -27,12 +32,12 @@ export const LocationPage = () => {
         itemsTitle={t('locationPage.characters')}
         error={charactersError}
       >
-        <span>
+        <Typography as={'span'} variant={'span'}>
           <strong>{t('locationPage.type')}: </strong> {location.type}
-        </span>
-        <span>
+        </Typography>
+        <Typography as={'span'} variant={'span'}>
           <strong>{t('locationPage.dimension')}: </strong> {location.dimension}
-        </span>
+        </Typography>
       </ItemPageLayout>
     )
   )

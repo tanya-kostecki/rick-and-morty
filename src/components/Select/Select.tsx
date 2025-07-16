@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 
+import { Typography } from '@/components'
 import { useToggle } from '@/hooks'
 import { ArrowIcon } from '@assets/icons'
 
@@ -33,7 +34,9 @@ export const Select = () => {
       aria-labelledby="custom-select-label"
       tabIndex={0}
     >
-      <span id="custom-select-label">{languageLabels[chosenLang]}</span>
+      <Typography as={'span'} variant={'span'} id="custom-select-label">
+        {languageLabels[chosenLang]}
+      </Typography>
       <button
         aria-label={isOpen ? 'Collapse language options' : 'Expand language options'}
         aria-expanded={isOpen}
@@ -58,7 +61,9 @@ export const Select = () => {
           id={'language-dropdown'}
         >
           {languageOptions.map((option) => (
-            <span
+            <Typography
+              as={'span'}
+              variant={'span'}
               key={option}
               role="option"
               tabIndex={0}
@@ -67,7 +72,7 @@ export const Select = () => {
               onClick={() => onLanguageChange(option)}
             >
               {languageLabels[option]}
-            </span>
+            </Typography>
           ))}
         </div>
       )}

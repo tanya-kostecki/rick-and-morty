@@ -1,11 +1,9 @@
 import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 
-import { api } from '@api/api'
-import type { Location } from '@api/types'
-import { Card } from '@components/Card/Card'
-import { PageLayout } from '@components/PageLayout/PageLayout'
-import { useFetch } from '@hooks/useFetch'
+import { api, type Location } from '@/api'
+import { Typography, Card, PageLayout } from '@/components'
+import { useFetch } from '@/hooks'
 
 export const Locations = () => {
   const { t } = useTranslation()
@@ -29,9 +27,15 @@ export const Locations = () => {
     >
       {locations.map((location) => (
         <Card as={NavLink} to={`/locations/${location.id}`} key={location.id}>
-          <h3>{location.name}</h3>
-          <p>{location.type}</p>
-          <p>{location.dimension}</p>
+          <Typography as={'h3'} variant={'h3'}>
+            {location.name}
+          </Typography>
+          <Typography as={'p'} variant={'p'}>
+            {location.type}
+          </Typography>
+          <Typography as={'p'} variant={'p'}>
+            {location.dimension}
+          </Typography>
         </Card>
       ))}
     </PageLayout>

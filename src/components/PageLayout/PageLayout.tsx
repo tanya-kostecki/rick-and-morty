@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react'
 
-import { Loader, Title } from '@/components'
+import { Loader, Typography } from '@/components'
 
 import styles from './PageLayout.module.scss'
 import { Pagination } from './Pagination/Pagination'
 
-type Props = {
+interface Props {
   title: string
   isLoading: boolean
   children: ReactNode
@@ -28,7 +28,7 @@ export const PageLayout = ({
 }: Props) => {
   return (
     <>
-      <Title>{title}</Title>
+      <Typography>{title}</Typography>
       <div className={styles.cards} onMouseLeave={onMouseLeave}>
         {isLoading && <Loader />}
         {children}
