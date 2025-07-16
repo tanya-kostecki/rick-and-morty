@@ -8,6 +8,7 @@ import { Loader } from '../../components/Loader/Loader'
 import { Title } from '../../components/Title/Title'
 import { useFetchItem } from '../../hooks/useFetchItem'
 import { useFetchMultipleItems } from '../../hooks/useFetchMultipleItems'
+import { formatDate } from '../../utils/formatDate'
 
 import styles from './Character.module.scss'
 
@@ -59,7 +60,7 @@ export const CharacterPage = () => {
           </span>
           <span>
             <strong>{t('characterPage.created')}: </strong>
-            {character?.created}
+            {character?.created && formatDate(character?.created)}
           </span>
         </div>
       </Card>

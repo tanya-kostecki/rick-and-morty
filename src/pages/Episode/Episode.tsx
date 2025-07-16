@@ -7,6 +7,7 @@ import { ItemPageLayout } from '../../components/ItemPageLayout/ItemPageLayout'
 import { Loader } from '../../components/Loader/Loader'
 import { useFetchItem } from '../../hooks/useFetchItem'
 import { useFetchMultipleItems } from '../../hooks/useFetchMultipleItems'
+import { formatDate } from '../../utils/formatDate'
 
 export const EpisodePage = () => {
   const { id } = useParams()
@@ -33,7 +34,7 @@ export const EpisodePage = () => {
           <strong>{t('episodePage.releaseDate')}: </strong> {episode.air_date}
         </span>
         <span>
-          <strong>{t('episodePage.created')}: </strong> {episode.created}
+          <strong>{t('episodePage.created')}: </strong> {formatDate(episode.created)}
         </span>
       </ItemPageLayout>
     )
