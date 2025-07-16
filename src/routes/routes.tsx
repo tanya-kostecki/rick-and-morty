@@ -1,11 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom'
 
-import { RootLayout } from '../components/RootLayout/RootLayout'
-import { CharacterPage } from '../pages/Character/Character'
+import { RootLayout } from '@components/RootLayout/RootLayout'
+import { CharacterPage } from '@pages/Character/Character'
+import { EpisodePage } from '@pages/Episode/Episode'
+import { LocationPage } from '@pages/Location/Location'
+
 import Characters from '../pages/Characters/Characters'
-import { EpisodePage } from '../pages/Episode/Episode'
 import Episodes from '../pages/Episodes/Episodes'
-import { LocationPage } from '../pages/Location/Location'
 import Locations from '../pages/Locations/Locations'
 
 export const routes = createBrowserRouter([

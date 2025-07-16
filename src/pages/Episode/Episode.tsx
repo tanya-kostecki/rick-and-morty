@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 
-import { api } from '../../api/api'
-import type { Character } from '../../api/types'
-import { ItemPageLayout } from '../../components/ItemPageLayout/ItemPageLayout'
-import { Loader } from '../../components/Loader/Loader'
-import { useFetchItem } from '../../hooks/useFetchItem'
-import { useFetchMultipleItems } from '../../hooks/useFetchMultipleItems'
-import { formatDate } from '../../utils/formatDate'
+import { api } from '@api/api'
+import type { Character } from '@api/types'
+import { ItemPageLayout } from '@components/ItemPageLayout/ItemPageLayout'
+import { Loader } from '@components/Loader/Loader'
+import { useFetchItem } from '@hooks/useFetchItem'
+import { useFetchMultipleItems } from '@hooks/useFetchMultipleItems'
+import { formatDate } from '@utils/formatDate'
 
 export const EpisodePage = () => {
   const { id } = useParams()

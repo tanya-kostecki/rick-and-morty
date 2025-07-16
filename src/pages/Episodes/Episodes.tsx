@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 
-import { api } from '../../api/api'
-import type { Episode } from '../../api/types'
-import { Card } from '../../components/Card/Card'
-import { PageLayout } from '../../components/PageLayout/PageLayout'
-import { useFetch } from '../../hooks/useFetch'
+import { api } from '@api/api'
+import type { Episode } from '@api/types'
+import { Card } from '@components/Card/Card'
+import { PageLayout } from '@components/PageLayout/PageLayout'
+import { useFetch } from '@hooks/useFetch'
 
 const Episodes = () => {
   const { t } = useTranslation()

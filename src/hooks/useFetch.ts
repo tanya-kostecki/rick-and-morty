@@ -1,7 +1,7 @@
 import axios, { isAxiosError } from 'axios'
 import { useEffect, useState } from 'react'
 
-import type { BaseResponse } from '../api/types'
+import type { BaseResponse } from '@api/types'
 
 type Params = { page?: number } & { signal: AbortSignal }
 

@@ -1,13 +1,13 @@
 import { Fragment, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { api } from '../../api/api'
-import type { Character } from '../../api/types'
-import { CharacterCard } from '../../components/CharacterCard/CharacterCard'
-import { Modal } from '../../components/Modal/Modal'
-import { PageLayout } from '../../components/PageLayout/PageLayout'
-import { useFetch } from '../../hooks/useFetch'
-import { useScreenWidth } from '../../hooks/useScreenWidth'
+import { api } from '@api/api'
+import type { Character } from '@api/types'
+import { CharacterCard } from '@components/CharacterCard/CharacterCard'
+import { Modal } from '@components/Modal/Modal'
+import { PageLayout } from '@components/PageLayout/PageLayout'
+import { useFetch } from '@hooks/useFetch'
+import { useScreenWidth } from '@hooks/useScreenWidth'
 
 const Characters = () => {
   const { t } = useTranslation()

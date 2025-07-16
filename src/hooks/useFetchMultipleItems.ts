@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react'
 
-import type { Character, Episode, Location } from '../api/types'
+import type { Character, Episode, Location } from '@api/types'
 
-function getDataUrls(pageData: PageData): string[] {
+export function getDataUrls(pageData: PageData): string[] {
   if ('residents' in pageData) return pageData.residents
   if ('characters' in pageData) return pageData.characters
   if ('episode' in pageData) return pageData.episode
   return []
 }
 
-type PageData = Character | Episode | Location
+export type PageData = Character | Episode | Location
 
-interface Params {
+export interface Params {
   pageData: PageData | null
   fetchFn: (ids: number[]) => Promise<PageData[]>
 }
