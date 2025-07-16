@@ -3,8 +3,8 @@ import { userEvent } from '@testing-library/user-event'
 import { beforeEach, describe, expect, vi } from 'vitest'
 import '@testing-library/jest-dom'
 
-import { getVisiblePages } from '@components/PageLayout/Pagination/getVisiblePages'
-import { Pagination } from '@components/PageLayout/Pagination/Pagination'
+import { getVisiblePages } from '@components/Pagination/getVisiblePages'
+import { Pagination } from '@components/Pagination/Pagination'
 
 vi.mock('./Pagination.module.scss', () => ({
   default: {

@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react'
 
 import { Loader, Typography } from '@/components'
+import { Pagination } from '@components/Pagination/Pagination'
 
-import styles from './PageLayout.module.scss'
-import { Pagination } from './Pagination/Pagination'
+import styles from './ItemsPageLayout.module.scss'
 
 interface Props {
   title: string
@@ -16,7 +16,7 @@ interface Props {
   onMouseLeave?: () => void
 }
 
-export const PageLayout = ({
+export const ItemsPageLayout = ({
   title,
   isLoading,
   children,

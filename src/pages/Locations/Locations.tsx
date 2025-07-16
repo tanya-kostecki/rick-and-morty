@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 
 import { api, type Location } from '@/api'
-import { Typography, Card, PageLayout } from '@/components'
-import { useFetch } from '@/hooks'
+import { Typography, Card, ItemsPageLayout } from '@/components'
+import { useFetchAllItems } from '@/hooks'
 
 export const Locations = () => {
   const { t } = useTranslation()
@@ -14,10 +14,10 @@ export const Locations = () => {
     allPages,
     currentPage,
     setCurrentPage,
-  } = useFetch<Location>(api.fetchLocations)
+  } = useFetchAllItems<Location>(api.fetchLocations)
 
   return (
-    <PageLayout
+    <ItemsPageLayout
       title={t('locations.title')}
       isLoading={isLoading}
       error={error}
@@ -38,6 +38,6 @@ export const Locations = () => {
           </Typography>
         </Card>
       ))}
-    </PageLayout>
+    </ItemsPageLayout>
   )
 }

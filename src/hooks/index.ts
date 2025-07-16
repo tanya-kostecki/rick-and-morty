@@ -1,5 +1,5 @@
 export * from './useFetchMultipleItems'
 export * from './useFetchItem'
-export * from './useFetch'
+export * from './useFetchAllItems'
 export * from './useToggle'
 export * from './useScreenWidth'

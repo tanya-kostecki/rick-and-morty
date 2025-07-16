@@ -1,12 +1,9 @@
 import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 
-import { Typography } from '@/components'
-import { api } from '@api/api'
-import type { Episode } from '@api/types'
-import { Card } from '@components/Card/Card'
-import { PageLayout } from '@components/PageLayout/PageLayout'
-import { useFetch } from '@hooks/useFetch'
+import { api, type Episode } from '@/api'
+import { Typography, Card, ItemsPageLayout } from '@/components'
+import { useFetchAllItems } from '@/hooks'
 
 export const Episodes = () => {
   const { t } = useTranslation()
@@ -17,10 +14,10 @@ export const Episodes = () => {
     allPages,
     currentPage,
     setCurrentPage,
-  } = useFetch<Episode>(api.fetchEpisodes)
+  } = useFetchAllItems<Episode>(api.fetchEpisodes)
 
   return (
-    <PageLayout
+    <ItemsPageLayout
       title={t('episodes.title')}
       isLoading={isLoading}
       error={error}
@@ -38,6 +35,6 @@ export const Episodes = () => {
           </Typography>
         </Card>
       ))}
-    </PageLayout>
+    </ItemsPageLayout>
   )
 }

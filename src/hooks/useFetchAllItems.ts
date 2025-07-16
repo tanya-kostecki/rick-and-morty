@@ -6,7 +6,7 @@ import { responseErrorHandler } from '@/utils'
 
 type Params = { page?: number } & { signal: AbortSignal }
 
-export const useFetch = <T>(
+export const useFetchAllItems = <T>(
   fetchFn: ({ signal, ...params }: Params) => Promise<BaseResponse<T>>
 ) => {
   const [data, setData] = useState<T[]>([])

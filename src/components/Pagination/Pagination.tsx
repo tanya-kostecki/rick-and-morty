@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
 
 import { Button, Typography } from '@/components'
-import { getVisiblePages } from '@components/PageLayout/Pagination/getVisiblePages'
+import { getVisiblePages } from '@components/Pagination/getVisiblePages'
 
 import styles from './Pagination.module.scss'
 

@@ -2,8 +2,8 @@ import { Fragment, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { api, type Character } from '@/api'
-import { CharacterCard, Modal, PageLayout } from '@/components'
-import { useFetch, useScreenWidth } from '@/hooks'
+import { CharacterCard, Modal, ItemsPageLayout } from '@/components'
+import { useFetchAllItems, useScreenWidth } from '@/hooks'
 
 export const Characters = () => {
   const { t } = useTranslation()
@@ -14,14 +14,14 @@ export const Characters = () => {
     allPages,
     currentPage,
     setCurrentPage,
-  } = useFetch<Character>(api.fetchCharacters)
+  } = useFetchAllItems<Character>(api.fetchCharacters)
 
   const [currentCharacter, setCurrentCharacter] = useState<Character | null>(null)
   const { isTablet } = useScreenWidth()
 
   console.log('Characters page', currentCharacter)
   return (
-    <PageLayout
+    <ItemsPageLayout
       title={t('characters.title')}
       isLoading={isLoading}
       error={error}
@@ -52,6 +52,6 @@ export const Characters = () => {
           )}
         </Fragment>
       ))}
-    </PageLayout>
+    </ItemsPageLayout>
   )
 }
