@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
-import { Card } from '../Card/Card'
+import { Card } from '@/components'
 
 import styles from './CharacterCard.module.scss'
 

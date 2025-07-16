@@ -7,7 +7,7 @@ import { Card } from '@components/Card/Card'
 import { PageLayout } from '@components/PageLayout/PageLayout'
 import { useFetch } from '@hooks/useFetch'
 
-const Locations = () => {
+export const Locations = () => {
   const { t } = useTranslation()
   const {
     data: locations,
@@ -37,4 +37,3 @@ const Locations = () => {
     </PageLayout>
   )
 }
-export default Locations

@@ -1,14 +1,10 @@
 import { useTranslation } from 'react-i18next'
 import { NavLink, useParams } from 'react-router-dom'
 
-import { api } from '@api/api'
-import type { Episode } from '@api/types'
-import { Card } from '@components/Card/Card'
-import { Loader } from '@components/Loader/Loader'
-import { Title } from '@components/Title/Title'
-import { useFetchItem } from '@hooks/useFetchItem'
-import { useFetchMultipleItems } from '@hooks/useFetchMultipleItems'
-import { formatDate } from '@utils/formatDate'
+import { api, type Episode } from '@/api'
+import { Card, Loader, Title } from '@/components'
+import { useFetchItem, useFetchMultipleItems } from '@/hooks'
+import { formatDate } from '@/utils'
 
 import styles from './Character.module.scss'
 

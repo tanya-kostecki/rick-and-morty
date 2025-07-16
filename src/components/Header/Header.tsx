@@ -2,11 +2,9 @@ import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
 import { Link, NavLink } from 'react-router-dom'
 
-import { LogoIcon } from '@assets/icons/LogoIcon'
-import { useScreenWidth } from '@hooks/useScreenWidth'
-import { useToggle } from '@hooks/useToggle'
-
-import { Select } from '../Select/Select'
+import { LogoIcon } from '@/assets/icons'
+import { Select } from '@/components'
+import { useScreenWidth, useToggle } from '@/hooks'
 
 import styles from './Header.module.scss'
 import { getHeaderLinks } from './headerLinks'

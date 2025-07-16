@@ -7,7 +7,7 @@ import { Card } from '@components/Card/Card'
 import { PageLayout } from '@components/PageLayout/PageLayout'
 import { useFetch } from '@hooks/useFetch'
 
-const Episodes = () => {
+export const Episodes = () => {
   const { t } = useTranslation()
   const {
     data: episodes,
@@ -36,4 +36,3 @@ const Episodes = () => {
     </PageLayout>
   )
 }
-export default Episodes

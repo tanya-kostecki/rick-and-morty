@@ -1,0 +1,6 @@
+export * from './Episode/Episode'
+export * from './Location/Location'
+export * from './Character/Character'
+export * from './Episodes/Episodes'
+export * from './Characters/Characters'
+export * from './Locations/Locations'

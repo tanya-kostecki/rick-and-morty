@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { Loader } from '../Loader/Loader'
-import { Title } from '../Title/Title'
+import { Loader, Title } from '@/components'
 
 import styles from './PageLayout.module.scss'
 import { Pagination } from './Pagination/Pagination'

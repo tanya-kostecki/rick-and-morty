@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import type { Character, Episode, Location } from '@api/types'
+import type { Character, Episode, Location } from '@/api'
 
 export function getDataUrls(pageData: PageData): string[] {
   if ('residents' in pageData) return pageData.residents

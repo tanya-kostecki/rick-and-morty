@@ -1,13 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 
-import { RootLayout } from '@components/RootLayout/RootLayout'
-import { CharacterPage } from '@pages/Character/Character'
-import { EpisodePage } from '@pages/Episode/Episode'
-import { LocationPage } from '@pages/Location/Location'
-
-import Characters from '../pages/Characters/Characters'
-import Episodes from '../pages/Episodes/Episodes'
-import Locations from '../pages/Locations/Locations'
+import { RootLayout } from '@/components'
+import { CharacterPage, EpisodePage, LocationPage, Characters, Episodes, Locations } from '@/pages'
 
 export const routes = createBrowserRouter([
   {

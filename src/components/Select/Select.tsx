@@ -1,7 +1,8 @@
 import clsx from 'clsx'
 
-import { ArrowIcon } from '../../assets/icons/ArrowIcon'
-import { useToggle } from '../../hooks/useToggle'
+import { useToggle } from '@/hooks'
+import { ArrowIcon } from '@assets/icons'
+
 import i18n from '../../i18n'
 
 import styles from './Select.module.scss'

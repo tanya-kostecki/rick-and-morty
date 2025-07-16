@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
 
-import { Button } from '../../Button/Button'
+import { Button } from '@/components'
 
 import styles from './Pagination.module.scss'
 

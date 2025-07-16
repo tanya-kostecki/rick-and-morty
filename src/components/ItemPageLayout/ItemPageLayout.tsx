@@ -1,10 +1,8 @@
 import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import type { Character } from '../../api/types'
-import { Card } from '../Card/Card'
-import { CharacterCard } from '../CharacterCard/CharacterCard'
-import { Title } from '../Title/Title'
+import type { Character } from '@/api'
+import { CharacterCard, Card, Title } from '@/components'
 
 import styles from './ItemPageLayout.module.scss'
 

@@ -1,8 +1,8 @@
 import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 
-import type { Character } from '../../api/types'
-import { MenuIcon } from '../Header/MenuIcon/MenuIcon'
+import type { Character } from '@/api'
+import { MenuIcon } from '@components/Header/MenuIcon/MenuIcon'
 
 import styles from './Modal.module.scss'
 
