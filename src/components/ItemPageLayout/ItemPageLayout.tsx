@@ -11,8 +11,9 @@ type Props = {
   characters: Character[]
   children: ReactNode
   itemsTitle: string
+  error: string | null
 }
-export const ItemPageLayout = ({ pageTitle, characters, children, itemsTitle }: Props) => {
+export const ItemPageLayout = ({ pageTitle, characters, children, itemsTitle, error }: Props) => {
   const { t } = useTranslation()
   return (
     <>
@@ -37,6 +38,7 @@ export const ItemPageLayout = ({ pageTitle, characters, children, itemsTitle }: 
           ))}
         </div>
       )}
+      {error && <span>{error}</span>}
     </>
   )
 }

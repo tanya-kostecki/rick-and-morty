@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import type { Character, Episode, Location } from '@/api'
+import { responseErrorHandler } from '@/utils'
 
 export function getDataUrls(pageData: PageData): string[] {
   if ('residents' in pageData) return pageData.residents
@@ -17,6 +18,7 @@ export interface Params {
 }
 export const useFetchMultipleItems = ({ pageData, fetchFn }: Params) => {
   const [data, setData] = useState<PageData[] | null>([])
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     if (!pageData) return
@@ -32,12 +34,13 @@ export const useFetchMultipleItems = ({ pageData, fetchFn }: Params) => {
         const arrayData = Array.isArray(res) ? res : [res]
         setData(arrayData)
       } catch (error) {
-        console.log(error)
+        const errorMessage = responseErrorHandler(error)
+        setError(errorMessage)
       }
     }
 
     getEpisodeCharacters()
   }, [pageData, fetchFn])
 
-  return { data }
+  return { data, error }
 }

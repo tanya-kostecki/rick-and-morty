@@ -9,7 +9,7 @@ export const LocationPage = () => {
   const { id } = useParams()
   const { data: location, isLoading, error } = useFetchItem(api.fetchLocation, Number(id))
 
-  const { data: locationCharacters } = useFetchMultipleItems({
+  const { data: locationCharacters, error: charactersError } = useFetchMultipleItems({
     pageData: location,
     fetchFn: api.fetchMultipleCharacters,
   })
@@ -25,6 +25,7 @@ export const LocationPage = () => {
         pageTitle={location.name}
         characters={locationCharacters as Character[]}
         itemsTitle={t('locationPage.characters')}
+        error={charactersError}
       >
         <span>
           <strong>{t('locationPage.type')}: </strong> {location.type}

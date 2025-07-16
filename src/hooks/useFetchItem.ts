@@ -1,5 +1,6 @@
-import { isAxiosError } from 'axios'
 import { useEffect, useState } from 'react'
+
+import { responseErrorHandler } from '@/utils'
 
 export const useFetchItem = <T>(fetchFn: (id: number) => Promise<T>, id: number) => {
   const [data, setData] = useState<T | null>(null)
@@ -15,15 +16,8 @@ export const useFetchItem = <T>(fetchFn: (id: number) => Promise<T>, id: number)
         const res = await fetchFn(id)
         setData(res)
       } catch (error) {
-        if (isAxiosError(error)) {
-          if (error.status === 404) {
-            setError(error.response?.data.error)
-          } else {
-            setError(error.message)
-          }
-        } else {
-          setError('Some error occurred')
-        }
+        const errorMessage = responseErrorHandler(error)
+        setError(errorMessage)
       } finally {
         setIsLoading(false)
       }

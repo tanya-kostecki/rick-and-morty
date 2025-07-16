@@ -1,7 +1,8 @@
-import axios, { isAxiosError } from 'axios'
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 import type { BaseResponse } from '@/api'
+import { responseErrorHandler } from '@/utils'
 
 type Params = { page?: number } & { signal: AbortSignal }
 
@@ -28,16 +29,8 @@ export const useFetch = <T>(
         setAllPages(res.info.pages)
       } catch (error) {
         if (axios.isCancel(error)) return
-
-        if (isAxiosError(error)) {
-          if (error.status === 404) {
-            setError(error.response?.data.error)
-          } else {
-            setError(error.message)
-          }
-        } else {
-          setError('Some error occurred')
-        }
+        const errorMessage = responseErrorHandler(error)
+        setError(errorMessage)
       } finally {
         setIsLoading(false)
       }
