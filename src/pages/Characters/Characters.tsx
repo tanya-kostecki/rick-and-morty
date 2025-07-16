@@ -11,13 +11,14 @@ import { useScreenWidth } from '../../hooks/useScreenWidth'
 
 const Characters = () => {
   const { t } = useTranslation()
-  const [currentPage, setCurrentPage] = useState(1)
   const {
     data: characters,
     error,
     isLoading,
     allPages,
-  } = useFetch<Character>(api.fetchCharacters, currentPage)
+    currentPage,
+    setCurrentPage,
+  } = useFetch<Character>(api.fetchCharacters)
 
   const [currentCharacter, setCurrentCharacter] = useState<Character | null>(null)
   const { isTablet } = useScreenWidth()

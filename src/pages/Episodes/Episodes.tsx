@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 
@@ -10,13 +9,14 @@ import { useFetch } from '../../hooks/useFetch'
 
 const Episodes = () => {
   const { t } = useTranslation()
-  const [currentPage, setCurrentPage] = useState(1)
   const {
     data: episodes,
     error,
     isLoading,
     allPages,
-  } = useFetch<Episode>(api.fetchEpisodes, currentPage)
+    currentPage,
+    setCurrentPage,
+  } = useFetch<Episode>(api.fetchEpisodes)
 
   return (
     <PageLayout

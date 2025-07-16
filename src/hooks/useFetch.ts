@@ -6,13 +6,13 @@ import type { BaseResponse } from '../api/types'
 type Params = { page?: number } & { signal: AbortSignal }
 
 export const useFetch = <T>(
-  fetchFn: ({ signal, ...params }: Params) => Promise<BaseResponse<T>>,
-  page: number = 1
+  fetchFn: ({ signal, ...params }: Params) => Promise<BaseResponse<T>>
 ) => {
   const [data, setData] = useState<T[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [allPages, setAllPages] = useState(0)
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     const controller = new AbortController()
@@ -20,9 +20,10 @@ export const useFetch = <T>(
     const fetchData = async () => {
       setIsLoading(true)
       setError(null)
+      setData([])
 
       try {
-        const res = await fetchFn({ page, signal: controller.signal })
+        const res = await fetchFn({ page: currentPage, signal: controller.signal })
         setData(res.results)
         setAllPages(res.info.pages)
       } catch (error) {
@@ -47,7 +48,7 @@ export const useFetch = <T>(
     return () => {
       controller.abort()
     }
-  }, [fetchFn, page])
+  }, [fetchFn, currentPage])
 
-  return { data, isLoading, error, allPages }
+  return { data, isLoading, error, allPages, currentPage, setCurrentPage }
 }
