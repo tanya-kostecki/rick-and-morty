@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { userEvent } from '@testing-library/user-event'
 import { expect, vi } from 'vitest'
@@ -64,11 +64,11 @@ describe('Select Component', () => {
     expect(localStorage.getItem('lang')).toBe('ru')
   })
 
-  it('should change language on option click', () => {
+  it('should change language on option click', async () => {
     const { getByText, getByRole } = render(<Select />)
-
-    fireEvent.click(getByRole('button'))
-    fireEvent.click(getByText('РУ'))
+    const user = userEvent.setup()
+    await user.click(getByRole('button'))
+    await user.click(getByText('РУ'))
 
     expect(vi.mocked(i18n.changeLanguage)).toHaveBeenCalledWith('ru')
     expect(vi.mocked(i18n).language).toBe('ru')

@@ -1,7 +1,8 @@
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
 
-import { Button } from '@/components'
+import { Button, Typography } from '@/components'
+import { getVisiblePages } from '@components/PageLayout/Pagination/getVisiblePages'
 
 import styles from './Pagination.module.scss'
 
@@ -11,26 +12,12 @@ interface Props {
   setCurrentPage: (page: number) => void
 }
 
-const getVisiblePages = (lastPage: number, currentPage: number) => {
-  const maxVisible = 4
-  const firstPage = 1
-
-  let firstVisiblePage = Math.min(Math.max(currentPage - 2, firstPage), lastPage - maxVisible + 1)
-
-  if (firstVisiblePage < firstPage) firstVisiblePage = firstPage
-
-  const visiblePages = []
-  for (let i = firstVisiblePage; i < firstVisiblePage + maxVisible && i <= lastPage; i++) {
-    visiblePages.push(i)
-  }
-
-  return { firstPage, visiblePages }
-}
-
 export const Pagination = ({ lastPage, currentPage, setCurrentPage }: Props) => {
   const { firstPage, visiblePages } = getVisiblePages(lastPage, currentPage)
 
   const { t } = useTranslation()
+
+  const filteredPages = visiblePages.filter((page) => page !== firstPage && page !== lastPage)
 
   return (
     <div className={styles.wrapper}>
@@ -44,43 +31,53 @@ export const Pagination = ({ lastPage, currentPage, setCurrentPage }: Props) => 
         {t('pagination.back')}
       </Button>
 
-      <span
+      <Typography
+        as={'span'}
+        variant={'span'}
         className={currentPage === firstPage ? styles.activeSpan : styles.span}
         onClick={() => {
           setCurrentPage(firstPage)
         }}
       >
         {firstPage}
-      </span>
+      </Typography>
 
-      {visiblePages[0] > firstPage + 1 && <span className={styles.span}>...</span>}
-
-      {visiblePages
-        .filter((page) => page !== firstPage && page !== lastPage)
-        .map((page) => (
-          <span
-            key={page}
-            className={page === currentPage ? styles.activeSpan : styles.span}
-            onClick={() => {
-              setCurrentPage(page)
-            }}
-          >
-            {page}
-          </span>
-        ))}
-
-      {visiblePages[visiblePages.length - 1] < lastPage - 1 && (
-        <span className={styles.span}>...</span>
+      {visiblePages[0] > firstPage + 1 && (
+        <Typography as={'span'} variant={'span'} className={styles.span}>
+          ...
+        </Typography>
       )}
 
-      <span
+      {filteredPages.map((page) => (
+        <Typography
+          as={'span'}
+          variant={'span'}
+          key={page}
+          className={page === currentPage ? styles.activeSpan : styles.span}
+          onClick={() => {
+            setCurrentPage(page)
+          }}
+        >
+          {page}
+        </Typography>
+      ))}
+
+      {visiblePages[visiblePages.length - 1] < lastPage - 1 && (
+        <Typography as={'span'} variant={'span'} className={styles.span}>
+          ...
+        </Typography>
+      )}
+
+      <Typography
+        as={'span'}
+        variant={'span'}
         className={currentPage === lastPage ? styles.activeSpan : styles.span}
         onClick={() => {
           setCurrentPage(lastPage)
         }}
       >
         {lastPage}
-      </span>
+      </Typography>
 
       <Button
         className={clsx(currentPage === lastPage && styles.disable)}
