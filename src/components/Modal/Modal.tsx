@@ -1,4 +1,5 @@
 import { createPortal } from 'react-dom'
+import { useTranslation } from 'react-i18next'
 
 import type { Character } from '../../api/types'
 import { MenuIcon } from '../Header/MenuIcon/MenuIcon'
@@ -12,6 +13,7 @@ type Props = {
 
 export const Modal = ({ currentCharacter, onClose }: Props) => {
   const body = document.querySelector('body')
+  const { t } = useTranslation()
 
   if (!body) return null
 
@@ -19,10 +21,16 @@ export const Modal = ({ currentCharacter, onClose }: Props) => {
     <div className={styles.modalWrapper}>
       <MenuIcon isOpen={!!currentCharacter} className={styles.close} onClick={onClose} />
       <div className={styles.modal}>
-        <h3>Name: {currentCharacter.name}</h3>
+        <h3>
+          {t('modal.name')}: {currentCharacter.name}
+        </h3>
         <img src={currentCharacter.image} alt={currentCharacter.name} className={styles.img} />
-        <p>Species: {currentCharacter.species}</p>
-        <p>Location: {currentCharacter.location.name}</p>
+        <p>
+          {t('modal.species')}: {currentCharacter.species}
+        </p>
+        <p>
+          {t('modal.location')}: {currentCharacter.location.name}
+        </p>
       </div>
     </div>,
     body

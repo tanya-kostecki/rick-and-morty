@@ -16,5 +16,31 @@
   },
   "locations": {
     "title": "Локации"
+  },
+  "characterPage": {
+    "gender": "Пол",
+    "type": "Тип",
+    "species": "Вид",
+    "location": "Место нахожления",
+    "origin": "Происхождение",
+    "status": "Статус",
+    "created": "Дата создания",
+    "featured": "Персонажи из эпизода",
+    "releaseDate": "Дата выхода"
+  },
+  "locationPage": {
+    "type": "Тип",
+    "dimension": "Измерение",
+    "characters": "Персонажи из локации",
+    "noCharacters": "Здесь нет персонажей"
+  },
+  "episodePage": {
+    "releaseDate": "Дата выхода",
+    "created": "Дата создания"
+  },
+  "modal": {
+    "name": "Имя персонажа",
+    "species": "Вид",
+    "location": "Место нахожления"
   }
 }

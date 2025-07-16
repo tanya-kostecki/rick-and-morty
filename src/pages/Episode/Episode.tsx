@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 
 import { api } from '../../api/api'
@@ -6,40 +6,34 @@ import type { Character } from '../../api/types'
 import { ItemPageLayout } from '../../components/ItemPageLayout/ItemPageLayout'
 import { Loader } from '../../components/Loader/Loader'
 import { useFetchItem } from '../../hooks/useFetchItem'
+import { useFetchMultipleItems } from '../../hooks/useFetchMultipleItems'
 
 export const EpisodePage = () => {
   const { id } = useParams()
   const { data: episode, isLoading, error } = useFetchItem(api.fetchEpisode, Number(id))
-  const [episodeCharacters, setEpisodeCharacters] = useState<Character[]>([])
 
-  useEffect(() => {
-    if (!episode) return
+  const { data: episodeCharacters } = useFetchMultipleItems({
+    pageData: episode,
+    fetchFn: api.fetchMultipleCharacters,
+  })
 
-    const ids = episode.characters.map((url) => Number(url.split('/').pop()))
-
-    const getEpisodeCharacters = async () => {
-      try {
-        const res = await api.fetchMultipleCharacters(ids)
-        setEpisodeCharacters(res)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
-    getEpisodeCharacters()
-  }, [episode])
+  const { t } = useTranslation()
 
   if (isLoading) return <Loader />
   if (error) return <span>{error}</span>
 
   return (
     episode && (
-      <ItemPageLayout pageTitle={episode.name} characters={episodeCharacters}>
+      <ItemPageLayout
+        pageTitle={episode.name}
+        characters={episodeCharacters as Character[]}
+        itemsTitle={'Characters from episode'}
+      >
         <span>
-          <strong>Air date: </strong> {episode.air_date}
+          <strong>{t('episodePage.releaseDate')}: </strong> {episode.air_date}
         </span>
         <span>
-          <strong>Created: </strong> {episode.created}
+          <strong>{t('episodePage.created')}: </strong> {episode.created}
         </span>
       </ItemPageLayout>
     )

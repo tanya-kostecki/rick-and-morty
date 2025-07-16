@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import type { Character } from '../../api/types'
 import { Card } from '../Card/Card'
@@ -11,8 +12,10 @@ type Props = {
   pageTitle: string
   characters: Character[]
   children: ReactNode
+  itemsTitle: string
 }
-export const ItemPageLayout = ({ pageTitle, characters, children }: Props) => {
+export const ItemPageLayout = ({ pageTitle, characters, children, itemsTitle }: Props) => {
+  const { t } = useTranslation()
   return (
     <>
       <Title>{pageTitle}</Title>
@@ -20,18 +23,22 @@ export const ItemPageLayout = ({ pageTitle, characters, children }: Props) => {
         <div className={styles.infoBlock}>{children}</div>
       </Card>
       <Title as={'h2'} className={styles.h2}>
-        Characters from episode
+        {itemsTitle}
       </Title>
-      <div className={styles.characters}>
-        {characters.map((character) => (
-          <CharacterCard
-            key={character.id}
-            id={character.id}
-            image={character.image}
-            name={character.name}
-          />
-        ))}
-      </div>
+      {characters.length === 0 ? (
+        <span>{t('locationPage.noCharacters')}</span>
+      ) : (
+        <div className={styles.characters}>
+          {characters.map((character) => (
+            <CharacterCard
+              key={character.id}
+              id={character.id}
+              image={character.image}
+              name={character.name}
+            />
+          ))}
+        </div>
+      )}
     </>
   )
 }

@@ -16,5 +16,31 @@
   },
   "locations": {
     "title": "Locations"
+  },
+  "characterPage": {
+    "gender": "Gender",
+    "type": "Type",
+    "species": "Species",
+    "location": "Location",
+    "origin": "Origin",
+    "status": "Status",
+    "created": "Created",
+    "featured": "Featured in this episode",
+    "releaseDate": "Release date"
+  },
+  "locationPage": {
+    "type": "Type",
+    "dimension": "Dimension",
+    "characters": "Characters from the location",
+    "noCharacters": "There are no characters in this location"
+  },
+  "episodePage": {
+    "releaseDate": "Release date",
+    "created": "Created"
+  },
+  "modal": {
+    "name": "Character name",
+    "species": "Species",
+    "location": "Location"
   }
 }
