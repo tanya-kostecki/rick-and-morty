@@ -4,9 +4,9 @@ import type { TFunction } from 'i18next'
 import { MemoryRouter } from 'react-router-dom'
 import { expect, type Mock, vi } from 'vitest'
 
-import { Header } from '@components/Header/Header'
-import { getHeaderLinks } from '@components/Header/headerLinks'
-import { useScreenWidth } from '@hooks/useScreenWidth'
+import { Header } from '@/components'
+import { getHeaderLinks } from '@/components/Header/headerLinks'
+import { useScreenWidth } from '@/hooks'
 
 const mockToggleOpen = vi.fn()
 vi.mock('@hooks/useToggle', () => ({

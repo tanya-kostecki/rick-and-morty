@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react'
 
 import { Loader, Typography } from '@/components'
+import { MobilePagination } from '@/components/Pagination/MobilePagination'
+import { Pagination } from '@/components/Pagination/Pagination'
 import { useScreenWidth } from '@/hooks'
-import { MobilePagination } from '@components/Pagination/MobilePagination'
-import { Pagination } from '@components/Pagination/Pagination'
 
 import styles from './ItemsPageLayout.module.scss'
 

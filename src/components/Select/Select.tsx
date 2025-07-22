@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 
+import { ArrowIcon } from '@/assets/icons'
 import { Typography } from '@/components'
 import { useToggle } from '@/hooks'
-import { ArrowIcon } from '@assets/icons'
 
 import i18n from '../../i18n'
 

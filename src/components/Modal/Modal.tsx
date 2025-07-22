@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import type { Character } from '@/api'
 import { Typography } from '@/components'
-import { MenuIcon } from '@components/Header/MenuIcon/MenuIcon'
+import { MenuIcon } from '@/components/Header/MenuIcon/MenuIcon'
 
 import styles from './Modal.module.scss'
 

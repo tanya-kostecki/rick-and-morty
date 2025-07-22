@@ -3,9 +3,9 @@ import { MemoryRouter } from 'react-router-dom'
 import { expect, vi } from 'vitest'
 
 import '@testing-library/jest-dom'
-import { api } from '@api/api'
-import type { Character, Episode } from '@api/types'
-import { EpisodePage } from '@pages/Episode/Episode'
+import { api } from '@/api/api'
+import type { Character, Episode } from '@/api/types'
+import { EpisodePage } from '@/pages'
 
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom')

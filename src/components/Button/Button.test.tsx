@@ -4,7 +4,7 @@ import { describe, expect } from 'vitest'
 
 import '@testing-library/jest-dom'
 
-import { Button } from '@components/Button/Button'
+import { Button } from '@/components'
 
 describe('Button Component', () => {
   it('should render a <button> element by default', () => {
