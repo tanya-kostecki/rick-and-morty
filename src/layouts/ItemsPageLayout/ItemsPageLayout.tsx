@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 
 import { Loader, Typography } from '@/components'
+import { useScreenWidth } from '@/hooks'
+import { MobilePagination } from '@components/Pagination/MobilePagination'
 import { Pagination } from '@components/Pagination/Pagination'
 
 import styles from './ItemsPageLayout.module.scss'
@@ -26,16 +28,29 @@ export const ItemsPageLayout = ({
   currentPage,
   onMouseLeave,
 }: Props) => {
+  const { isMobile } = useScreenWidth()
+
+  if (isLoading) return <Loader />
+
   return (
     <>
       <Typography>{title}</Typography>
       <div className={styles.cards} onMouseLeave={onMouseLeave}>
-        {isLoading && <Loader />}
         {children}
-        {error && <span>{error}</span>}
+        {error && (
+          <Typography as={'span'} variant={'span'}>
+            {error}
+          </Typography>
+        )}
       </div>
 
-      {!isLoading && (
+      {isMobile ? (
+        <MobilePagination
+          currentPage={currentPage}
+          lastPage={pages}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : (
         <Pagination lastPage={pages} setCurrentPage={setCurrentPage} currentPage={currentPage} />
       )}
     </>

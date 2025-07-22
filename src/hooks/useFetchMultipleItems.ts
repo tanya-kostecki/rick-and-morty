@@ -19,6 +19,7 @@ export interface Params {
 export const useFetchMultipleItems = ({ pageData, fetchFn }: Params) => {
   const [data, setData] = useState<PageData[] | null>([])
   const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     if (!pageData) return
@@ -30,17 +31,20 @@ export const useFetchMultipleItems = ({ pageData, fetchFn }: Params) => {
 
     const getEpisodeCharacters = async () => {
       try {
+        setIsLoading(true)
         const res = await fetchFn(ids)
         const arrayData = Array.isArray(res) ? res : [res]
         setData(arrayData)
       } catch (error) {
         const errorMessage = responseErrorHandler(error)
         setError(errorMessage)
+      } finally {
+        setIsLoading(false)
       }
     }
 
     getEpisodeCharacters()
   }, [pageData, fetchFn])
 
-  return { data, error }
+  return { data, error, isLoading }
 }

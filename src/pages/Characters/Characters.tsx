@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { api, type Character } from '@/api'
@@ -19,7 +19,6 @@ export const Characters = () => {
   const [currentCharacter, setCurrentCharacter] = useState<Character | null>(null)
   const { isTablet } = useScreenWidth()
 
-  console.log('Characters page', currentCharacter)
   return (
     <ItemsPageLayout
       title={t('characters.title')}
@@ -33,25 +32,24 @@ export const Characters = () => {
       currentPage={currentPage}
     >
       {characters?.map((character) => (
-        <Fragment key={character.id}>
-          <CharacterCard
-            id={character.id}
-            onMouseEnter={() => {
-              setCurrentCharacter(character)
-            }}
-            name={character.name}
-            image={character.image}
-          />
-          {currentCharacter?.id === character.id && !isTablet && (
-            <Modal
-              currentCharacter={currentCharacter}
-              onClose={() => {
-                setCurrentCharacter(null)
-              }}
-            />
-          )}
-        </Fragment>
+        <CharacterCard
+          key={character.id}
+          id={character.id}
+          onMouseEnter={() => {
+            setCurrentCharacter(character)
+          }}
+          name={character.name}
+          image={character.image}
+        />
       ))}
+      {currentCharacter && !isTablet && (
+        <Modal
+          currentCharacter={currentCharacter}
+          onClose={() => {
+            setCurrentCharacter(null)
+          }}
+        />
+      )}
     </ItemsPageLayout>
   )
 }

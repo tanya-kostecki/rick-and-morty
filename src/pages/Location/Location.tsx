@@ -9,7 +9,11 @@ export const LocationPage = () => {
   const { id } = useParams()
   const { data: location, isLoading, error } = useFetchItem(api.fetchLocation, Number(id))
 
-  const { data: locationCharacters, error: charactersError } = useFetchMultipleItems({
+  const {
+    data: locationCharacters,
+    error: charactersError,
+    isLoading: charactersLoading,
+  } = useFetchMultipleItems({
     pageData: location,
     fetchFn: api.fetchMultipleCharacters,
   })
@@ -31,6 +35,7 @@ export const LocationPage = () => {
         characters={locationCharacters as Character[]}
         itemsTitle={t('locationPage.characters')}
         error={charactersError}
+        isLoading={charactersLoading}
       >
         <Typography as={'span'} variant={'span'}>
           <strong>{t('locationPage.type')}: </strong> {location.type}

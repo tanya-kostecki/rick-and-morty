@@ -10,7 +10,11 @@ export const EpisodePage = () => {
   const { id } = useParams()
   const { data: episode, isLoading, error } = useFetchItem(api.fetchEpisode, Number(id))
 
-  const { data: episodeCharacters, error: charactersError } = useFetchMultipleItems({
+  const {
+    data: episodeCharacters,
+    error: charactersError,
+    isLoading: charactersLoading,
+  } = useFetchMultipleItems({
     pageData: episode,
     fetchFn: api.fetchMultipleCharacters,
   })
@@ -32,6 +36,7 @@ export const EpisodePage = () => {
         characters={episodeCharacters as Character[]}
         itemsTitle={'Characters from episode'}
         error={charactersError}
+        isLoading={charactersLoading}
       >
         <Typography as={'span'} variant={'span'}>
           <strong>{t('episodePage.releaseDate')}: </strong> {episode.air_date}

@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import type { Character } from '@/api'
-import { CharacterCard, Card, Typography } from '@/components'
+import { CharacterCard, Card, Typography, Loader } from '@/components'
 
 import styles from './ItemPageLayout.module.scss'
 
@@ -12,9 +12,20 @@ interface Props {
   children: ReactNode
   itemsTitle: string
   error: string | null
+  isLoading: boolean
 }
-export const ItemPageLayout = ({ pageTitle, characters, children, itemsTitle, error }: Props) => {
+export const ItemPageLayout = ({
+  pageTitle,
+  characters,
+  children,
+  itemsTitle,
+  error,
+  isLoading,
+}: Props) => {
   const { t } = useTranslation()
+
+  if (isLoading) return <Loader />
+
   return (
     <>
       <Typography>{pageTitle}</Typography>
